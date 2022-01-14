@@ -1,0 +1,109 @@
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css cdn-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+          .p2{
+            padding: 2%;
+          }
+          .p10{
+            padding: 10%;
+          }
+          .main{
+              display: flex;
+          }
+          .box{
+            flex: 1 0 25%;
+            width: 30%;
+            margin: 5px;
+
+          }
+          .myContainer{
+              display: flex;
+              /* wrap after 3 items */
+                flex-wrap: wrap;
+
+          }
+          .sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            padding: 5px;
+            z-index: 900;
+        }
+      </style>
+    </head>
+
+    <body>
+
+        <!-- main-container -->
+        <div class="container">
+            <header text-center>
+                <div class="card">
+                    <div class="card-til">
+                        <h2 class="center-align p2 teal lighten-2 white-text">You can find it here</h2>
+                    </div>
+                </div>
+            </header>
+            <!--Insert search bar -->
+            <section class="sticky">
+                <div class="row">
+                    <div class="col l12 s6">
+                        <div class="card">
+                            <form action="" id="search-form">
+                                <div class="card-content">
+                                    <div class="input-field">
+                                        <input type="text" id="q" name="search" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button class="btn waves-effect waves-light" type="submit" id="search-btn">Search
+                                        <i class="material-icons right">search</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Insert featured items -->
+            <section>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="center-align p2 teal lighten-2 white-text">Featured Items</h3>
+                        <div id="featured-div" class="myContainer">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="center-align p2 teal lighten-2 white-text">Search Result</h3>
+                        <div id="search-result-div" class="myContainer">
+                            <!-- sample flex box items -->
+                                
+                        </div>
+
+                        </div>
+                    </div>
+            </section>
+                                        
+        </div>
+      <!--JavaScript at end of body for optimized loading-->
+      <!-- add materialize js cdn -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <!-- add local js -->
+     <script type="text/javascript" src="public/js/app.js"></script>    
+      <!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+    </body>
+  </html>
+        
