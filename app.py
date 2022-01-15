@@ -65,6 +65,3 @@ def search_contact():
 
 # read_csv_file('address_data.csv')
 # sys.exit(0)
-
-if __name__ == '__main__':
-    app.run() 
