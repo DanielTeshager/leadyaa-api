@@ -30,57 +30,27 @@ def show_all():
         contacts_list.append(contacts[number].format())
     return jsonify(contacts_list)
 
-@app.route('/contacts/<int:id>')
-def show_contact(id):
-    contact = Contact.query.get_or_404(id)
-    return jsonify(contact.serialize())
 
-#create a new contact
-@app.route('/contacts', methods=['POST'])
-def create_contact():
-    name = request.json['name']
-    phone = request.json['phone']
-    email = request.json['email']
-    avatar = request.json['avatar']
-
-    contact = Contact(name, phone, email, avatar)
-    contact.insert()
-
-    return jsonify(contact.serialize()), 201
-
-#update a contact
-@app.route('/contacts/<int:id>', methods=['PATCH'])
-def update_contact(id):
-    contact = Contact.query.get_or_404(id)
-
-    name = request.json['name']
-    phone = request.json['phone']
-    email = request.json['email']
-    avatar = request.json['avatar']
-
-    contact.name = name
-    contact.phone = phone
-    contact.email = email
-    contact.avatar = avatar
-
-    contact.update()
-
-    return jsonify(contact.serialize())
-
-#delete a contact
-@app.route('/contacts/<int:id>', methods=['DELETE'])
-def delete_contact(id):
-    contact = Contact.query.get_or_404(id)
-    contact.delete()
-
-    return jsonify(contact.serialize())
 
 # search for a contact
 @app.route('/contacts/search', methods=['GET'])
 def search_contact():
     search = request.args.get('q')
     contacts = Contact.query.filter(Contact.name.contains(search)).all()
-    return jsonify([contact.serialize() for contact in contacts])
+    # return not found if no contacts are found
+    if not contacts:
+        return jsonify({
+            'success': False,
+            'message': 'No contacts found'
+        }), 404
+    else:
+        # return contacts
+        return jsonify({
+            'success': True,
+            'data': [contact.serialize() for contact in contacts],
+            'message': 'Contacts found'
+        }), 200
+
 
 #only uncomment this if you want to insert new data to db
 
@@ -97,5 +67,4 @@ def search_contact():
 # sys.exit(0)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=8282)
-    
+    app.run() 
