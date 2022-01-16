@@ -14,7 +14,8 @@ from models import setup_db, Contact
 app = Flask(__name__)
 #add CORS
 #cors allow origin from www.leadyaa.com
-CORS(app)
+# allow cros origin
+CORS(app, resources={r"*": {"origins": "https://www.leadyaa.com"}})
 setup_db(app)
 
 @app.route('/')
