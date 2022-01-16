@@ -14,7 +14,7 @@ from models import setup_db, Contact
 app = Flask(__name__)
 #add CORS
 #cors allow origin from www.leadyaa.com
-CORS(app, resources={r"*": {"origins": "https://www.leadyaa.com"}})
+CORS(app, resources={r"*": {"origins": "*"}})
 setup_db(app)
 
 @app.after_request
@@ -33,7 +33,7 @@ def show_all():
     # add correct headers
     headers = {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://www.leadyaa.com'
+        'Access-Control-Allow-Origin': '*'
     }
     # return the list of contacts
     return jsonify({
