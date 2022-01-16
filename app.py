@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import random
@@ -54,4 +53,3 @@ def page_not_found(e):
         'success': False,
         'message': 'Not found'
     }), 404
-    
