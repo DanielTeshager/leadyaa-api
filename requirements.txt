@@ -92,4 +92,5 @@ wikipedia==1.4.0
 wrapt==1.11.1
 WTForms==2.3.3
 zipp==3.6.0
-googletrans==3.1.0a0
+googletrans-temp==2.3.0
+googletrans==2.3.0
