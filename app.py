@@ -33,7 +33,7 @@ def show_all():
     # add correct headers
     headers = {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://www.leadyaa.com'
     }
     # return the list of contacts
     return jsonify({
@@ -69,7 +69,7 @@ def search_contact():
         # return contacts
         headers = {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://www.leadyaa.com'
         }
         return jsonify({
             'success': True,
