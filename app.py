@@ -21,10 +21,6 @@ def show_all():
     contacts_list = []
     for number in random_numbers:
         contacts_list.append(contacts[number].format())
-    #translate name
-    translator = GoogleTranslator()
-    for contact in contacts_list:
-        contact['name'] = translator.translate(contact['name'])
     # return the list of contacts
     return jsonify({
         'success': True,
