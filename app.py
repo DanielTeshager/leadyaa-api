@@ -13,7 +13,8 @@ from models import setup_db, Contact
 
 app = Flask(__name__)
 #add CORS
-CORS(app, resources={r"*": {"origins": "*"}})
+#cors allow origin from www.leadyaa.com
+CORS(app, resources={r"*": {"origins": "http://www.leadyaa.com"}})
 setup_db(app)
 
 @app.route('/')
