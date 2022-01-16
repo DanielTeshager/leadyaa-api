@@ -30,22 +30,17 @@ def show_all():
     for number in random_numbers:
         contacts_list.append(contacts[number].format())
     # add correct headers
-    headers = {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://www.leadyaa.com'
-    }
     # return the list of contacts
     return jsonify({
         'success': True,
         'contacts': contacts_list
-    }), 200, headers
+    }), 200
 
 
 
 
 # search for a contact
 #cors allow origin from www.leadyaa.com
-@app.after_request
 @app.route('/contacts/search', methods=['GET'])
 def search_contact():
     search = request.args.get('q')
@@ -58,15 +53,11 @@ def search_contact():
         }), 404
     else:
         # return contacts
-        headers = {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://www.leadyaa.com'
-        }
         return jsonify({
             'success': True,
             'data': [contact.serialize() for contact in contacts],
             'message': 'Contacts found'
-        }), 200, headers
+        }), 200
 
 
 #only uncomment this if you want to insert new data to db
