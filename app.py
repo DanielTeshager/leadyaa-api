@@ -1,4 +1,4 @@
-
+from googletrans import Translator
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import random
@@ -21,6 +21,10 @@ def show_all():
     contacts_list = []
     for number in random_numbers:
         contacts_list.append(contacts[number].format())
+    # translate name from contact_list
+    translator = Translator()
+    for contact in contacts_list:
+        contact['name'] = translator.translate(contact['name'], dest='am').text
     # return the list of contacts
     return jsonify({
         'success': True,
@@ -54,4 +58,3 @@ def page_not_found(e):
         'success': False,
         'message': 'Not found'
     }), 404
-    
