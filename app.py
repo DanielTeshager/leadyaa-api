@@ -1,8 +1,10 @@
+from deep_translator import GoogleTranslator
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import random
 import time
 from models import setup_db, Contact
+
 
 
 app = Flask(__name__)
@@ -20,6 +22,10 @@ def show_all():
     contacts_list = []
     for number in random_numbers:
         contacts_list.append(contacts[number].format())
+    #translate name
+    translator = GoogleTranslator()
+    for contact in contacts_list:
+        contact['name'] = translator.translate(contact['name'])
     # return the list of contacts
     return jsonify({
         'success': True,
