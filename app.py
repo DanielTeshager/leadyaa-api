@@ -14,9 +14,10 @@ from models import setup_db, Contact
 app = Flask(__name__)
 #add CORS
 #cors allow origin from www.leadyaa.com
-CORS(app, resources={r"*": {"origins": "http://www.leadyaa.com"}})
+CORS(app, resources={r"*": {"origins": "https://www.leadyaa.com"}})
 setup_db(app)
 
+@app.after_request
 @app.route('/')
 # allow CORS
 def show_all():
@@ -34,6 +35,8 @@ def show_all():
 
 
 # search for a contact
+#cors allow origin from www.leadyaa.com
+@app.after_request
 @app.route('/contacts/search', methods=['GET'])
 def search_contact():
     search = request.args.get('q')
