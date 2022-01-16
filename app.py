@@ -49,15 +49,7 @@ def show_all():
 @app.route('/contacts/search', methods=['GET'])
 def search_contact():
     search = request.args.get('q')
-    # search for a contact
-    # case insensitive
-    search = search.lower()
-    # search for a contact
-    # case insensitive
-    search = search.lower()
-    # filter contacts case insensitive
-    contacts = Contact.query.filter(Contact.name.ilike(f'%{search}%')).all()
-    # contacts = Contact.query.filter(Contact.name.contains(search)).all()
+    contacts = Contact.query.filter(Contact.name.contains(search)).all()
     # return not found if no contacts are found
     if not contacts:
         return jsonify({
